@@ -43,7 +43,7 @@ public class BulkLoader {
         
         if (args.length < 2)
         {
-        	System.out.println("Testtttt");
+        	
             System.out.println(new Date() + " : **ERROR** : Missing configuration file argument");
             System.out.println("Run using following command : ");
             System.out.println("java -jar bulk_load.jar <config_file> <csv_file_location>");
@@ -62,7 +62,6 @@ public class BulkLoader {
         }
         
         String filePrefix = csvFileArg.substring(0,csvFileArg.lastIndexOf('.'));
-        System.out.println("Testtttt" +filePrefix);
         String errorFile = filePrefix+"_reject.csv";
         String rateLimitFile = filePrefix+"_replay.csv";
         errorHeaders = (configuration.getProperty("csvHeaderRow")+",errorCode,errorCause").split(",");
@@ -88,7 +87,6 @@ public class BulkLoader {
             Consumer worker = new Consumer(myQueue);
             consumers[i] = new Thread(worker);
             consumers[i].start();
-            System.out.println("Testtttt" +filePrefix);
         }
         
         producer.join();
