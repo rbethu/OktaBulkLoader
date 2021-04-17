@@ -26,3 +26,7 @@ Steps:
 5. Using the jar file that is created in the target directory, start up the application
 
 	$> java -jar target/okta-bulkload.jar <path_to_config_file> <path_to_csv_file>
+
+
+
+fkfExammple : java -jar target/okta-bulkload.jar "C:\Users\18324\Downloads\OktaBulkLoader-master\OktaBulkLoader-master\src\main\resources\config.properties" "C:\Users\18324\Downloads\OktaBulkLoader-master\OktaBulkLoader-master\test1.csv"
