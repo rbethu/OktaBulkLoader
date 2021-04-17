@@ -23,6 +23,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.*;
 /**
  *
+ *Author Sushant Lahoti
  * 
  */
 
@@ -53,7 +54,7 @@ public class BulkLoader {
            
             configuration.load(new FileInputStream(args[0]));
             csvFileArg = args[1];
-            	System.out.println(csvFileArg);
+       
           
         }
         catch(Exception e){
@@ -117,10 +118,13 @@ class Producer implements Runnable {
     public void run() {
         try {
             //initialize the CSVParser object
-        
+        //	Reader in = new FileReader(csvFileArg);
+        	
+        	InputStreamReader inputStreamreader = new InputStreamReader(new FileInputStream(csvFileArg), "UTF-8");
             CSVParser parser = new CSVParser(new FileReader(csvFileArg), format);
             for(CSVRecord record : parser)           
                 queue.put(record);
+            
             parser.close();
         } catch (Exception excp) { 
             System.out.println(excp.getLocalizedMessage());
@@ -166,6 +170,7 @@ class Producer implements Runnable {
         JSONObject user = new JSONObject();
         JSONObject creds = new JSONObject();
         JSONObject profile = new JSONObject();
+        JSONObject password = new JSONObject();
 
         //Add username
         profile.put("login", csvRecord.get(csvLoginField));
@@ -173,20 +178,25 @@ class Producer implements Runnable {
       
         for (String headerColumn:csvHeaders)
         profile.put(configuration.getProperty("csvHeader."+headerColumn),csvRecord.get(headerColumn));
-        for (String headerColumn:csvHeaders)
-            System.out.println(csvRecord.get(headerColumn));
-            
+       
         
       //  creds.put("password", new JSONObject("{\"value\": \""+RandomStringUtils.randomAlphabetic(8)+"\"}"));
 
-        creds.put("password", new JSONObject("{\"value\": \"Welcome@123\"}")); 
+   /*     // This is for the hardcoded password
+        creds.put("password", new JSONObject("{\"value\": \"Welcome@123\"}")); // This is for the hardcoded password
+        user.put("profile", profile);
+        user.put("credentials", creds);
+        */
+        
+        password.put("hook", new JSONObject("{\"type\": \"default\"}"));
+        creds.put("password", password);
         user.put("profile", profile);
         user.put("credentials", creds);
 
         // Build JSON payload
         StringEntity data = new StringEntity(user.toString(),ContentType.APPLICATION_JSON);
        
-
+System.out.println(creds);
         // build http request and assign payload data
         HttpUriRequest request = RequestBuilder
                 .post("https://"+org+"/api/v1/users")
