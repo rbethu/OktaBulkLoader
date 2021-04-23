@@ -2,6 +2,7 @@ package com.okta.bulkload;
 
 import static com.okta.bulkload.BulkLoader.*;
 
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -171,7 +172,8 @@ class Producer implements Runnable {
         JSONObject creds = new JSONObject();
         JSONObject profile = new JSONObject();
         JSONObject password = new JSONObject();
-
+        JSONArray groupIds = new JSONArray();
+        
         //Add username
         profile.put("login", csvRecord.get(csvLoginField));
         //Flesh out rest of profile
@@ -192,11 +194,16 @@ class Producer implements Runnable {
         creds.put("password", password);
         user.put("profile", profile);
         user.put("credentials", creds);
+        user.put("groupIds", groupIds);
+        groupIds.put("00gt8zv2v5a355DAd0h7");
+        
+        //This is to 
 
         // Build JSON payload
         StringEntity data = new StringEntity(user.toString(),ContentType.APPLICATION_JSON);
        
-System.out.println(creds);
+//System.out.println(creds);
+System.out.println(user);
         // build http request and assign payload data
         HttpUriRequest request = RequestBuilder
                 .post("https://"+org+"/api/v1/users")
