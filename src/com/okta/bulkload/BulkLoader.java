@@ -203,7 +203,7 @@ class Producer implements Runnable {
         StringEntity data = new StringEntity(user.toString(),ContentType.APPLICATION_JSON);
        
 //System.out.println(creds);
-System.out.println(user);
+//System.out.println(user);
         // build http request and assign payload data
         HttpUriRequest request = RequestBuilder
                 .post("https://"+org+"/api/v1/users")

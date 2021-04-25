@@ -10,7 +10,7 @@ Steps:
 
 1. Install Maven - https://maven.apache.org/install.html
 
-2. Download OktaBulkLoad repository from Github - https://github.com/schandra-okta/OktaBulkLoader.git
+2. Download OktaBulkLoad repository from Github - https://github.com/Sushantlahoti/OktaBulkLoader.git
 
 3. Make appropriate changes to the config.properties file to match up with
    your local environment
@@ -29,4 +29,4 @@ Steps:
 
 
 
-fkfExammple : java -jar target/okta-bulkload.jar "C:\Users\18324\Downloads\OktaBulkLoader-master\OktaBulkLoader-master\src\main\resources\config.properties" "C:\Users\18324\Downloads\OktaBulkLoader-master\OktaBulkLoader-master\test1.csv"
+Exammple : java -jar target/okta-bulkload.jar "C:\Users\18324\Downloads\OktaBulkLoader-master\OktaBulkLoader-master\src\main\resources\config.properties" "C:\Users\18324\Downloads\OktaBulkLoader-master\OktaBulkLoader-master\test1.csv"
