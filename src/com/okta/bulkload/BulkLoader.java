@@ -182,7 +182,7 @@ class Producer implements Runnable {
         profile.put(configuration.getProperty("csvHeader."+headerColumn),csvRecord.get(headerColumn));
        
         
-      //  creds.put("password", new JSONObject("{\"value\": \""+RandomStringUtils.randomAlphabetic(8)+"\"}"));
+        creds.put("password", new JSONObject("{\"value\": \""+RandomStringUtils.randomAlphabetic(8)+"\"}"));
 
    /*     // This is for the hardcoded password
         creds.put("password", new JSONObject("{\"value\": \"Welcome@123\"}")); // This is for the hardcoded password
@@ -190,12 +190,12 @@ class Producer implements Runnable {
         user.put("credentials", creds);
         */
         
-        password.put("hook", new JSONObject("{\"type\": \"default\"}"));
-        creds.put("password", password);
-        user.put("profile", profile);
-        user.put("credentials", creds);
-        user.put("groupIds", groupIds);
-        groupIds.put("00gt8zv2v5a355DAd0h7");
+      //  password.put("hook", new JSONObject("{\"type\": \"default\"}"));
+      // creds.put("password", password);
+      //  user.put("profile", profile);
+     //   user.put("credentials", creds);
+     //   user.put("groupIds", groupIds);
+     //   groupIds.put("00gt8zv2v5a355DAd0h7");
         
         //This is to 
 
